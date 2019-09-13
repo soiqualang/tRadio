@@ -1,0 +1,15 @@
+<html>
+<head>
+	<link href="css/video-js.css" rel="stylesheet">
+	<script src="js/video.js"></script>
+</head>
+<body>
+	<audio id='hls-example' class="video-js vjs-default-skin" controls preload="auto" width="400" height="400" poster="img/Stargroves-album-cover.png" data-setup='{}'>
+		<source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8">
+	</audio>
+	<script>
+		var player = videojs('hls-example');
+		player.play();
+	</script>
+</body>
+</html>

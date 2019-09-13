@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link href="../css/video-js.css" rel="stylesheet">
+	<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+	<script src="../js/videojs-contrib-hls.js"></script>
+	<script src="../js/video.js"></script>
+</head>
+<body>
+	<!-- HTML -->
+	<!--<video id='hls-example'  class="video-js vjs-default-skin" width="400" height="300" controls>
+	<source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8">
+	</video>-->
+
+	<!--<audio id='hls-example'  class="video-js vjs-default-skin" controls>
+	  <source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8">
+	Your browser does not support the audio element.
+	</audio>-->
+	
+	<audio id='hls-example' class="video-js vjs-default-skin" controls preload="auto" width="400" height="400" poster="../img/Stargroves-album-cover.png" data-setup='{}'>
+		<source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8">
+	</audio>
+
+	<!-- JS code -->
+	<script>
+	var player = videojs('hls-example');
+	player.play();
+	</script>
+</body>
+</html>
