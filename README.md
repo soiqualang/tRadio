@@ -29,3 +29,6 @@ https://api.webrad.io/data/streams/80/vov1
 * https://www.w3schools.com/html/html5_audio.asp
 * http://tim-peterson.github.io/videojs-playlist/#track-1
 * http://www.convertstring.com/vi/EncodeDecode/HtmlDecode
+
+* https://github.com/soiqualang/Learn_AngularJS/blob/master/t13_AngularJS_Select_Boxes/t1.html
+* https://soiqualang.github.io/Learn_AngularJS/t13_AngularJS_Select_Boxes/t1.html
