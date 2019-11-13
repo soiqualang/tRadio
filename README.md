@@ -24,6 +24,8 @@ https://api.webrad.io/data/streams/80/vov1
 > https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8
 > rtmp://5a6872aace0ce.streamlock.net/nghevov1/|vov1.stream_aac
 
+> http://cdn.mediatech.vn/hntvRadio/joyfm.stream_aac/playlist.m3u8
+
 **array to json in javascript**
 ```js
 var list_station = JSON.parse(JSON.stringify(list_station));
