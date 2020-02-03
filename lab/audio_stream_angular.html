@@ -10,20 +10,27 @@
     <div ng-app="myApp" ng-controller="myCtrl">
         <h1>{{myWelcome}}</h1>
 
-        <select ng-model="selectedStation" ng-options="x.idname for x in station_arr"></select>
+        <select ng-model="selectedStation" ng-options="x.idname for x in station_arr" ng-change="change_select(selectedStation)"></select>
 
         <h2>You selected: {{selectedStation.idname}}</h2>
-        <h2>Its color is: {{selectedStation.url}}</h2>
-
+        <h2>Its station service is: {{selectedStation.url}}</h2>
+        
         <br>
+        {{select_station.result.station.title}}
+        <br>
+        {{select_station.result.streams[1].url}}
+        <hr>
+
         <audio id='hls-example' class="video-js vjs-default-skin" controls preload="auto" width="400" height="400" poster="../img/Stargroves-album-cover.png" data-setup='{}'>
-            <source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8">
+            <!-- <source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8"> -->
+            <source type="application/x-mpegURL" src="{{select_station.result.streams[1].url}}">
         </audio>
     </div>
     
 	<script>
-	var player = videojs('hls-example');
-	player.play();
+    //Phai load sau khi angular load url audio
+	/* var player = videojs('hls-example');
+	player.play(); */
 
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
@@ -32,10 +39,49 @@
         var data2get={id: "hahahahahahahaah"};
         
         $scope.myWelcome='Xin chao!';
+        $scope.vov1='https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8';
 
         $scope.station_arr = station_arr;
 
-
+        $scope.select_station={
+            "success": true,
+            "result": {
+                "station": {
+                    "id": 17277,
+                    "name": "vov1",
+                    "signal": "675 AM",
+                    "title": "VOV 1",
+                    "url": "http:\/\/vov1.vov.vn\/",
+                    "usePopup": false
+                },
+                "streams": [{
+                        "id": 206289,
+                        "isContainer": true,
+                        "mediaType": "HTML",
+                        "mime": "text\/html",
+                        "posX": 192,
+                        "posY": 242,
+                        "url": "http:\/\/vov1.vov.vn\/"
+                    }, {
+                        "id": 333929,
+                        "isContainer": true,
+                        "mediaType": "HLS",
+                        "mime": "application\/x-mpegURL",
+                        "posX": 0,
+                        "posY": 0,
+                        "url": "https:\/\/5a6872aace0ce.streamlock.net\/nghevov1\/vov1.stream_aac\/playlist.m3u8"
+                    }, {
+                        "id": 335958,
+                        "isContainer": true,
+                        "mediaType": "Flash",
+                        "mime": "audio\/mp4",
+                        "posX": 0,
+                        "posY": 0,
+                        "url": "rtmp:\/\/5a6872aace0ce.streamlock.net\/nghevov1\/|vov1.stream_aac"
+                    }
+                ]
+            }
+        };
         
         $scope.func2get=function(){
             $http({
@@ -60,6 +106,22 @@
                 $scope.myWelcome = response.data;
             });
         }
+
+        $scope.getStation_info=function(url){
+            $http({
+                method: 'GET',
+                url: url,
+                //params: data2get,
+                headers: httpconfig
+            }).then(function(response) {
+                //$scope.myWelcome = response.data;
+                $scope.select_station = response.data;
+            });
+        }
+
+        $scope.change_select=function(selectedStation){
+            $scope.getStation_info(selectedStation.url);
+        };
         
         
     });

@@ -11,6 +11,7 @@ https://soiqualang.github.io/tRadio/
 * Make audio not video tag
 * Make list radio
 * Push to Github page
+* Idea: Make a global radio (map radio) =))
 
 
 ## Labs
@@ -40,3 +41,5 @@ console.log(list_station);
 
 * https://github.com/soiqualang/Learn_AngularJS/blob/master/t13_AngularJS_Select_Boxes/t1.html
 * https://soiqualang.github.io/Learn_AngularJS/t13_AngularJS_Select_Boxes/t1.html
+
+* https://github.com/soiqualang/Learn_AngularJS/blob/master/t6_AngularJS_Data_Binding/t2.html

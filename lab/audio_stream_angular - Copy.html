@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link href="../css/video-js.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="../js/station_arr.js"></script>
+	<script src="../js/video.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1>{{myWelcome}}</h1>
+
+        <select ng-model="selectedStation" ng-options="x.idname for x in station_arr"></select>
+
+        <h2>You selected: {{selectedStation.idname}}</h2>
+        <h2>Its color is: {{selectedStation.url}}</h2>
+
+        <br>
+        <audio id='hls-example' class="video-js vjs-default-skin" controls preload="auto" width="400" height="400" poster="../img/Stargroves-album-cover.png" data-setup='{}'>
+            <source type="application/x-mpegURL" src="https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/playlist.m3u8">
+        </audio>
+    </div>
+    
+	<script>
+	var player = videojs('hls-example');
+	player.play();
+
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        var httpconfig={'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'};
+        var data2post=$.param({id: "hahahahahahahaah"});
+        var data2get={id: "hahahahahahahaah"};
+        
+        $scope.myWelcome='Xin chao!';
+
+        $scope.station_arr = station_arr;
+
+
+        
+        $scope.func2get=function(){
+            $http({
+                method: 'GET',
+                url: 'welcome.php',
+                //data: data2post,
+                params: data2get,
+                headers: httpconfig
+            }).then(function(response) {
+                $scope.myWelcome = response.data;
+            });
+        }
+        
+        $scope.func2post=function(){
+            $http({
+                method: 'POST',
+                url: 'welcome.php',
+                data: data2post,
+                //params: data2get,
+                headers: httpconfig
+            }).then(function(response) {
+                $scope.myWelcome = response.data;
+            });
+        }
+        
+        
+    });
+	</script>
+</body>
+</html>
